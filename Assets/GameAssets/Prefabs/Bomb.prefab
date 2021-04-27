@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1689107462206352925}
   - component: {fileID: 7013102548940062101}
   - component: {fileID: -1073653323922439900}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bomb
   m_TagString: Bomb
   m_Icon: {fileID: 0}
@@ -107,9 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c360654c80988924b8bb82abda155263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToSpawn: 5
-  actualTime: 0
-  RandomRangePosition: 220
+  health: 0
 --- !u!54 &-1073653323922439900
 Rigidbody:
   m_ObjectHideFlags: 0
