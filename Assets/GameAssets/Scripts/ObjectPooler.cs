@@ -43,6 +43,7 @@ public class ObjectPooler : MonoBehaviour
             Queue<GameObject> objectPool = new Queue<GameObject>();
             for (int i = 0; i < pool.size; i++)
             {
+                pool.actualTime = pool.timeToSpawn;
                 GameObject obj = Instantiate(pool.prefab);
                 obj.SetActive(false);
                 obj.transform.gameObject.GetComponent<IPoolValuesInitializer>().SetHealth(pool.health);
@@ -63,24 +64,24 @@ public class ObjectPooler : MonoBehaviour
                 }
                 else if(pool.actualTime >= pool.timeToSpawn && pool.actualAlive < pool.size)
                 {
-                    SpawnFromPool(pool.tag, new Vector3(Random.Range(-pool.RandomRangePosition, pool.RandomRangePosition), 1, Random.Range(-pool.RandomRangePosition, pool.RandomRangePosition)), Quaternion.identity);
+                    SpawnFromPool(pool.tag, new Vector3(Random.Range(-pool.RandomRangePosition, pool.RandomRangePosition), 1, Random.Range(-pool.RandomRangePosition, pool.RandomRangePosition)), Quaternion.identity,pool );
 
-                    
                     pool.actualTime = 0;
                     pool.actualAlive++;
                 }
             }
         }
     }
-    private void SpawnFromPool(string tag, Vector3 position, Quaternion rotation)
+    private void SpawnFromPool(string _tag, Vector3 _position, Quaternion _rotation,Pool _pool)
     {
-        if(!poolDictionary.ContainsKey(tag))
+        if(!poolDictionary.ContainsKey(_tag))
         {
-            Debug.LogWarning("Pool with tag " + tag + " doesn't excist");
+            Debug.LogWarning("Pool with tag " + _tag + " doesn't excist");
         }
-        GameObject objectToSpawn = poolDictionary[tag].Dequeue();
-        objectToSpawn.transform.position = position;
-        objectToSpawn.transform.rotation = rotation;
+        GameObject objectToSpawn = poolDictionary[_tag].Dequeue();
+        objectToSpawn.transform.position = _position;
+        objectToSpawn.transform.rotation = _rotation;
+        objectToSpawn.transform.gameObject.GetComponent<IPoolValuesInitializer>().SetHealth(_pool.health);
         objectToSpawn.SetActive(true);
         IObjectPooler pooledObj = objectToSpawn.GetComponent<IObjectPooler>();
         if (pooledObj != null)
@@ -88,5 +89,15 @@ public class ObjectPooler : MonoBehaviour
             pooledObj.OnObjectSpawn();
         }
         poolDictionary[tag].Enqueue(objectToSpawn);
+    }
+    public void OnDie(GameObject _damageable)
+    {
+        foreach (Pool pool in pools)
+        {
+            if(pool.tag == _damageable.tag)
+            {
+                pool.actualAlive--;
+            }
+        }
     }
 }
