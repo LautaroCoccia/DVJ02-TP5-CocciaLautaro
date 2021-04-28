@@ -13,15 +13,13 @@ public class PoolValuesInitializer : MonoBehaviour,IHitable, IPoolValuesInitiali
     {
         return health;
     }
-    public void OnHit(float damage)
+    public void OnHit(float _damage)
     {
-        Debug.Log("Health: "+ health);
-        health -= damage;
-        Debug.Log("Health: " + health);
-
+        health -= _damage;
         if (health <= 0)
         {
             gameObject.SetActive(false);
+            ObjectPooler.Get().OnDie(gameObject);
         }
     }
 }
