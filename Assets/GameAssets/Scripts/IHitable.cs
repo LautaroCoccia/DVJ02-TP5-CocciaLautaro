@@ -1,5 +1,5 @@
 ﻿public interface IHitable
 {
-     void OnHit(float damage);
+     void OnHit(float _damage);
 
 }
