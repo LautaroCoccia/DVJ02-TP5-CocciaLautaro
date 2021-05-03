@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-
 public class ObjectPooler : MonoBehaviour
 {
     [System.Serializable]
@@ -88,7 +87,7 @@ public class ObjectPooler : MonoBehaviour
         {
             pooledObj.OnObjectSpawn();
         }
-        poolDictionary[tag].Enqueue(objectToSpawn);
+        poolDictionary[_tag].Enqueue(objectToSpawn);
     }
     public void OnDie(GameObject _damageable)
     {

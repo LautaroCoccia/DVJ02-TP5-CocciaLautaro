@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
-
 #pragma warning disable 618, 649
 namespace UnityStandardAssets.Characters.FirstPerson
 {
@@ -28,6 +27,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip[] m_FootstepSounds;    // an array of footstep sounds that will be randomly selected from.
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
+        [SerializeField] private float health = 100;
+        [SerializeField] private int score = 0;
 
         private Camera m_Camera;
         private bool m_Jump;
@@ -42,7 +43,22 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
-
+        public void SetHealth(float _damage)
+        {
+            health -= _damage;
+        }
+        public float GetHealth()
+        {
+            return health;
+        }
+        public void SetScore(int _score)
+        {
+            score += _score;
+        }
+        public int GetScore()
+        {
+            return score;
+        }
         // Use this for initialization
         private void Start()
         {
@@ -83,16 +99,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
         }
-
-
         private void PlayLandingSound()
         {
             m_AudioSource.clip = m_LandSound;
             m_AudioSource.Play();
             m_NextStep = m_StepCycle + .5f;
         }
-
-
         private void FixedUpdate()
         {
             float speed;
@@ -254,7 +266,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 return;
             }
-            body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
+            body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);;
         }
     }
 }
