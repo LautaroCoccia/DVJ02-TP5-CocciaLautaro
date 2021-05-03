@@ -121,6 +121,87 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &64577753
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6124057161983841155, guid: 5b0104c3ef9e4244d8f4a3d7da1784e3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6124057161983841155, guid: 5b0104c3ef9e4244d8f4a3d7da1784e3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6124057161983841155, guid: 5b0104c3ef9e4244d8f4a3d7da1784e3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6124057161983841155, guid: 5b0104c3ef9e4244d8f4a3d7da1784e3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6124057161983841155, guid: 5b0104c3ef9e4244d8f4a3d7da1784e3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6124057161983841155, guid: 5b0104c3ef9e4244d8f4a3d7da1784e3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6124057161983841155, guid: 5b0104c3ef9e4244d8f4a3d7da1784e3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6124057161983841155, guid: 5b0104c3ef9e4244d8f4a3d7da1784e3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6124057161983841155, guid: 5b0104c3ef9e4244d8f4a3d7da1784e3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6124057161983841155, guid: 5b0104c3ef9e4244d8f4a3d7da1784e3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6124057161983841155, guid: 5b0104c3ef9e4244d8f4a3d7da1784e3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6124057161983841212, guid: 5b0104c3ef9e4244d8f4a3d7da1784e3,
+        type: 3}
+      propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5b0104c3ef9e4244d8f4a3d7da1784e3, type: 3}
+--- !u!114 &64577754 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5615430337810032903, guid: 5b0104c3ef9e4244d8f4a3d7da1784e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 64577753}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48cad16920d359c44bf04deafd6eab71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &483738889 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0,
@@ -1243,7 +1324,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8523432697084967791}
   m_Layer: 5
-  m_Name: PauseMenu
+  m_Name: PauseMenuUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1334,7 +1415,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 64577754}
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -2062,7 +2143,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8523432697771931173}
   m_Layer: 5
-  m_Name: QuitMenu
+  m_Name: QuitMenuUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2584,7 +2665,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8523432698057666925}
   m_Layer: 5
-  m_Name: GameOver
+  m_Name: GameOverUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3085,7 +3166,7 @@ GameObject:
   - component: {fileID: 8523432698666080822}
   - component: {fileID: 8523432698666080823}
   m_Layer: 5
-  m_Name: GameMenu
+  m_Name: GameMenuUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
