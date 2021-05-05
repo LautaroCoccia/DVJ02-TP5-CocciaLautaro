@@ -20,7 +20,6 @@ public class Gun : MonoBehaviour
     void Update()
     {
         transform.rotation = FpsCamera.transform.rotation;
-
         if (isReloading)
             return;
         if (Input.GetKeyDown(KeyCode.R) && currentAmmo<maxAmmo)
@@ -28,7 +27,7 @@ public class Gun : MonoBehaviour
             StartCoroutine( Reload());
             return;
         }
-        if (Input.GetButtonDown("Fire1")&& currentAmmo>0)
+        if (Input.GetButtonDown("Fire1") && currentAmmo>0)
         {
             Shoot();
         }

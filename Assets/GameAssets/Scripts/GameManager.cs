@@ -1,8 +1,9 @@
 ﻿using UnityEngine.SceneManagement;
 using UnityEngine;
-
+using System.IO;
 public class GameManager : MonoBehaviour
 {
+    
     private static GameManager _instanceGameManager;
     public static GameManager Get()
     {
@@ -19,6 +20,9 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    private void Start()
+    {
+    }
     public void LoadScene(string scene)
     {
         SceneManager.LoadScene(scene);
@@ -31,5 +35,12 @@ public class GameManager : MonoBehaviour
 
         Application.Quit();
     }
-
+    public void Save(int score)
+    {
+        SaveSystem.SaveHighscore(score);
+    }
+    public void Load()
+    {
+        SaveSystem.LoadHighscoreFile();
+    }
 }

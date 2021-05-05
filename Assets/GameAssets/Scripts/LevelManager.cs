@@ -11,10 +11,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject PauseMenuUI;
     [SerializeField] private GameObject QuitMenuUI;
     [SerializeField] private GameObject GameOverMenuUI;
-    [SerializeField] private FirstPersonController player;
+    [SerializeField] private PlayerCollision player;
     [SerializeField] private Gun gun;
 
-    int score = 0;
     private static bool pause = false;
     private static LevelManager _instanceLevelManager;
     private const int minLives = 1;
@@ -53,14 +52,7 @@ public class LevelManager : MonoBehaviour
     }
     private void UpdateScore()
     {
-        if(score < player.GetScore())
-        {
-            while (score < player.GetScore())
-            {
-                score++;
-                UIScore.text = ("SCORE: " + score);
-            }
-        }
+        UIScore.text = ("SCORE: " + player.GetScore());
     }
     private void UpdateHealth()
     {
@@ -84,7 +76,6 @@ public class LevelManager : MonoBehaviour
     public void SetPause()
     {
         pause = !pause;
-
         if (pause)
         {
             SetTimeScale(0);

@@ -6,6 +6,8 @@ public class ObjectPooler : MonoBehaviour
     public class Pool
     {
         public float health;
+        public int attackDamage;
+        public int score;
         public string tag;
         public GameObject prefab;
         public int size;
@@ -46,6 +48,10 @@ public class ObjectPooler : MonoBehaviour
                 GameObject obj = Instantiate(pool.prefab);
                 obj.SetActive(false);
                 obj.transform.gameObject.GetComponent<IPoolValuesInitializer>().SetHealth(pool.health);
+                obj.transform.gameObject.GetComponent<IPoolValuesInitializer>().SetScore(pool.score);
+                obj.transform.gameObject.GetComponent<IPoolValuesInitializer>().SetAttackDamage(pool.attackDamage);
+                
+
                 objectPool.Enqueue(obj);
             }
             poolDictionary.Add(pool.tag, objectPool);
@@ -91,6 +97,7 @@ public class ObjectPooler : MonoBehaviour
     }
     public void OnDie(GameObject _damageable)
     {
+        Debug.Log("ON DIE");
         foreach (Pool pool in pools)
         {
             if(pool.tag == _damageable.tag)
