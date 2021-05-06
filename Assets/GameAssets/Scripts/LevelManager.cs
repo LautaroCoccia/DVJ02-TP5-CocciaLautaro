@@ -70,8 +70,19 @@ public class LevelManager : MonoBehaviour
     {
         SetTimeScale(0);
         GameOverMenuUI.SetActive(true);
-        UIExtras.text = ("HEALTH " + player.GetHealth() + "\n"
-                + ("SCORE: " + player.GetScore()));
+        if(player.GetScore()>GameManager.Get().Highscore)
+        {
+            UIExtras.text = ("HEALTH " + player.GetHealth() + "\n"
+                + ("NEW RECORD: " + "\n"
+                + ("SCORE: " + player.GetScore())));
+        }
+        else
+        {
+            UIExtras.text = ("HEALTH " + player.GetHealth() + "\n" +
+                ("SCORE: " + player.GetScore()) +
+                ("HIGHSCORE" + GameManager.Get().Highscore));
+        }
+        
     }
     public void SetPause()
     {

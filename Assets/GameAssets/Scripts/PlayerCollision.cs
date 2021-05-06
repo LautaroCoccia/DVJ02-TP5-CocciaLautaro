@@ -24,6 +24,10 @@ public class PlayerCollision : MonoBehaviour
     }
     public float GetHealth()
     {
+        if(health<0)
+        {
+            health = 0;
+        }
         return health;
     }
     public void SetScore(int _score)
